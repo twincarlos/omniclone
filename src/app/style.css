@@ -1,0 +1,146 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+}
+
+.sorting-buttons {
+    display: flex;
+    gap: 1em;
+    padding: 2em;
+}
+
+button {
+    width: 10em;
+    height: 3em;
+    border-radius: .2em;
+    border: 1px solid;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    font-size: 1em;
+}
+
+@media screen and (max-width: 500px) {
+    .sorting-buttons {
+        flex-direction: column;
+    }
+
+    input {
+        width: 16em !important;
+    }
+
+    button {
+        width: 16em !important;
+    }
+
+    .events-list {
+        width: 25em !important;
+    }
+}
+
+i {
+    font-size: 1.5em;
+}
+
+input {
+    width: 20em;
+    height: 3em;
+    border: 1px solid;
+    padding: 1em;
+    font-size: 1em;
+    border-radius: .5em;
+}
+
+.events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    margin-bottom: 2em;
+    width: 50em;
+}
+
+.card {
+    max-width: 50em;
+    width: 100%;
+    text-align: center;
+    border: 1px solid rgba(246,247,249,.1);
+    border-radius: 0 0.5em 0.5em 0.5em;
+    background-color: #16181d;
+}
+
+.card i {
+    cursor: pointer;
+}
+
+.card i.fa-solid.fa-heart {
+    color: red;
+}
+
+.card > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+}
+
+.favorite-events-list .card > div {
+    gap: .5em;
+}
+
+.card-main {
+    padding: 1em;
+}
+
+.card-header {
+    padding: .5em;
+    border-bottom: 1px solid rgba(246,247,249,.1);
+}
+
+.card-footer {
+    border-top: 1px solid rgba(246,247,249,.1);
+    padding: .5em;
+}
+
+.favorites-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1em;
+    gap: 1em;
+    height: 1em;
+}
+
+.favorite-events-list {
+    border-radius: .5em;
+    border: 1px solid rgba(246,247,249,.1);
+    padding: .5em;
+    gap: 0;
+}
+
+.favorite-events-list .card {
+    margin-top: 1em;
+}
+
+button.active {
+    background-color: rgb(88 196 220/1);
+}
+
+.status {
+    font-weight: 700;
+}
+
+.status.open {
+    color: green;
+}
+
+.status.finished {
+    color: blue;
+}
+
+.status.closed {
+    color: red;
+}
