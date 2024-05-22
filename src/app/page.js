@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import "./style.css";
 
 export default function Home() {
-  const [events, setEvents] = useState([]);
+  const [groups, setGroups] = useState([]);
   const [filterText, setFilterText] = useState("");
-  const [sorting, setSorting] = useState({ category: null, type: null });
+  const [sorting, setSorting] = useState({ category: "state", type: "ASC" });
   const [favorites, setFavorites] = useState({});
   const [expandFavorites, setExpandFavorites] = useState(true);
 
@@ -21,14 +21,32 @@ export default function Home() {
     const fetchData = async () => {
       const response = await fetch('/api');
       const data = await response.json();
-      setEvents(data);
+      data.sort((a, b) => {
+        if (a.state < b.state) return -1;
+        if (a.state > b.state) return 1;
+        return 0;
+      });
+      const groupedEvents = [];
+      data.forEach(event => {
+        const currentGroup = groupedEvents[groupedEvents.length - 1]?.group;
+        if (currentGroup === event.state) {
+          groupedEvents[groupedEvents.length - 1].events.push(event);
+        } else {
+          groupedEvents.push({
+            group: event.state,
+            events: [event]
+          });
+        };
+      });
+      setGroups(groupedEvents);
     };
 
     fetchData();
   }, []);
 
   function sortByName() {
-    const sortedEvents = [...events];
+    const sortedEvents = [];
+    groups.forEach(group => sortedEvents.push(...group.events));
     if (sorting.category === "name") {
       if (sorting.type === "ASC") {
         sortedEvents.sort((a, b) => {
@@ -53,11 +71,24 @@ export default function Home() {
       });
       setSorting({ category: "name", type: "ASC" });
     };
-    setEvents(sortedEvents);
+    const groupedEvents = [];
+    sortedEvents.forEach(event => {
+      const currentGroup = groupedEvents[groupedEvents.length - 1]?.group;
+      if (currentGroup === event.name[0]) {
+        groupedEvents[groupedEvents.length - 1].events.push(event);
+      } else {
+        groupedEvents.push({
+          group: event.name[0],
+          events: [event]
+        });
+      };
+    });
+    setGroups(groupedEvents);
   };
 
   function sortByState() {
-    const sortedEvents = [...events];
+    const sortedEvents = [];
+    groups.forEach(group => sortedEvents.push(...group.events));
     if (sorting.category === "state") {
       if (sorting.type === "ASC") {
         sortedEvents.sort((a, b) => {
@@ -82,11 +113,24 @@ export default function Home() {
       });
       setSorting({ category: "state", type: "ASC" });
     };
-    setEvents(sortedEvents);
+    const groupedEvents = [];
+    sortedEvents.forEach(event => {
+      const currentGroup = groupedEvents[groupedEvents.length - 1]?.group;
+      if (currentGroup === event.state) {
+        groupedEvents[groupedEvents.length - 1].events.push(event);
+      } else {
+        groupedEvents.push({
+          group: event.state,
+          events: [event]
+        });
+      };
+    });
+    setGroups(groupedEvents);
   };
 
   function sortByDate() {
-    const sortedEvents = [...events];
+    const sortedEvents = [];
+    groups.forEach(group => sortedEvents.push(...group.events));
     if (sorting.category === "date") {
       if (sorting.type === "ASC") {
         sortedEvents.sort((a, b) => {
@@ -111,7 +155,19 @@ export default function Home() {
       });
       setSorting({ category: "date", type: "ASC" });
     };
-    setEvents(sortedEvents);
+    const groupedEvents = [];
+    sortedEvents.forEach(event => {
+      const currentGroup = groupedEvents[groupedEvents.length - 1]?.group;
+      if (currentGroup === `${event.date.split("-")[0].trim().slice(0, 2)}/${event.date.split("-")[0].trim().slice(6)}`) {
+        groupedEvents[groupedEvents.length - 1].events.push(event);
+      } else {
+        groupedEvents.push({
+          group: `${event.date.split("-")[0].trim().slice(0, 2)}/${event.date.split("-")[0].trim().slice(6)}`,
+          events: [event]
+        });
+      };
+    });
+    setGroups(groupedEvents);
   };
 
   function updateFavorites(eventId) {
@@ -125,90 +181,114 @@ export default function Home() {
     return setFavorites(updatedFavorites);
   };
 
-  if (!events.length) {
+  if (!groups.length) {
     return null;
   };
 
   return (
     <main>
-      <input type="text" placeholder="Search events" onChange={e => setFilterText(e.target.value)} />
-      <div className="sorting-buttons">
-        <button onClick={sortByName} className={`${sorting.category === "name" ? "active" : ""}`}>
-          {
-            sorting.category === "name" && sorting.type === "ASC" && <i className="fa-solid fa-arrow-down-a-z" />
-          }
-          {
-            sorting.category === "name" && sorting.type === "DESC" && <i className="fa-solid fa-arrow-down-z-a" />
-          }
-          Sort by name
-        </button>
-        <button onClick={sortByState} className={`${sorting.category === "state" ? "active" : ""}`}>
-          {
-            sorting.category === "state" && sorting.type === "ASC" && <i className="fa-solid fa-arrow-down-a-z" />
-          }
-          {
-            sorting.category === "state" && sorting.type === "DESC" && <i className="fa-solid fa-arrow-down-z-a" />
-          }
-          Sort by state
-        </button>
-        <button onClick={sortByDate} className={`${sorting.category === "date" ? "active" : ""}`}>
-          {
-            sorting.category === "date" && sorting.type === "ASC" && <i className="fa-solid fa-arrow-down-1-9" />
-          }
-          {
-            sorting.category === "date" && sorting.type === "DESC" && <i className="fa-solid fa-arrow-down-9-1" />
-          }
-          Sort by date
-        </button>
+      <div className="filters">
+        <div className="input-filter">
+          <input type="text" placeholder="Search events" onChange={e => setFilterText(e.target.value)} />
+        </div>
+        <div className="sorting-buttons">
+          <button onClick={sortByName} className={`${sorting.category === "name" ? "active" : ""}`}>
+            {sorting.category === "name" && sorting.type === "ASC" && <i className="fa-solid fa-arrow-down-a-z" />}
+            {sorting.category === "name" && sorting.type === "DESC" && <i className="fa-solid fa-arrow-down-z-a" />}
+            Sort by name
+          </button>
+          <button onClick={sortByState} className={`${sorting.category === "state" ? "active" : ""}`}>
+            {sorting.category === "state" && sorting.type === "ASC" && <i className="fa-solid fa-arrow-down-a-z" />}
+            {sorting.category === "state" && sorting.type === "DESC" && <i className="fa-solid fa-arrow-down-z-a" />}
+            Sort by state
+          </button>
+          <button onClick={sortByDate} className={`${sorting.category === "date" ? "active" : ""}`}>
+            {sorting.category === "date" && sorting.type === "ASC" && <i className="fa-solid fa-arrow-down-1-9" />}
+            {sorting.category === "date" && sorting.type === "DESC" && <i className="fa-solid fa-arrow-down-9-1" />}
+            Sort by date
+          </button>
+        </div>
       </div>
-      <div className="events-list favorite-events-list">
-        <div className="favorites-header">
-          {
-            expandFavorites ? <i className="fa-solid fa-chevron-down" onClick={() => setExpandFavorites(false)} /> : <i className="fa-solid fa-chevron-up" onClick={() => setExpandFavorites(true)} />
-          }
-          <h2>Favorites</h2>
+      <div className="favorites-list events-list">
+        <div className="card-section card-header">
+          <div className="card-subsection">
+            {expandFavorites ? <i className="fa-solid fa-chevron-down" onClick={() => setExpandFavorites(false)} /> : <i className="fa-solid fa-chevron-up" onClick={() => setExpandFavorites(true)} />}
+          </div>
+          <div className="card-subsection">
+            <p>Favorites</p>
+          </div>
         </div>
         {
           expandFavorites &&
-          events.filter(event => favorites[event.id] != undefined).map(event => (
+          groups.map(group => group.events.filter(event => favorites[event.id] != undefined).map(event => (
             <div key={event.id} className="card">
-              <div className="card-main">
-                {
-                  favorites[event.id] != undefined ? <i className="fa-solid fa-heart" onClick={() => updateFavorites(event.id)} /> : <i className="fa-regular fa-heart" onClick={() => updateFavorites(event.id)} />
-                }
-                <h3>{event.name}</h3>
+              <div className="card-section card-main">
+                <div className="card-subsection">
+                  {
+                    favorites[event.id] != undefined ? <i className="fa-solid fa-heart" onClick={() => updateFavorites(event.id)} /> : <i className="fa-regular fa-heart" onClick={() => updateFavorites(event.id)} />
+                  }
+                </div>
+                <div className="card-subsection">
+                  <p>{event.name}</p>
+                </div>
               </div>
             </div>
-          ))
+          )))
         }
       </div>
       <div className="events-list">
         {
-          events.filter(event => 
+          groups.map((group, index) => group.events.filter(event =>
             (favorites[event.id] === undefined) &&
             (
               event.name.toLowerCase().includes(filterText.toLowerCase()) ||
               event.state.toLowerCase().includes(filterText.toLowerCase()) ||
               event.city.toLowerCase().includes(filterText.toLowerCase())
-            )
-          ).map(event => (
-            <div key={event.id} className="card">
-              <div className="card-header">
+            )).length ? (
+              <div className="group" key={index}>
+                <div className="group-header">
+                  <h2>{group.group}</h2>
+                </div>
                 {
-                  favorites[event.id] != undefined ? <i className="fa-solid fa-heart" onClick={() => updateFavorites(event.id)} /> : <i className="fa-regular fa-heart" onClick={() => updateFavorites(event.id)} />
+                  group.events.filter(event =>
+                    (favorites[event.id] === undefined) &&
+                    (
+                      event.name.toLowerCase().includes(filterText.toLowerCase()) ||
+                      event.state.toLowerCase().includes(filterText.toLowerCase()) ||
+                      event.city.toLowerCase().includes(filterText.toLowerCase())
+                    )
+                  ).map(event => (
+                    <div key={event.id} className="card">
+                      <div className="card-section card-header">
+                        <div className="card-subsection">
+                          {favorites[event.id] != undefined ? <i className="fa-solid fa-heart" onClick={() => updateFavorites(event.id)} /> : <i className="fa-regular fa-heart" onClick={() => updateFavorites(event.id)} />}
+                        </div>
+                        <div className="card-subsection">
+                          <p>{event.state}</p>
+                        </div>
+                        <div className="card-subsection">
+                          <p>{event.city}</p>
+                        </div>
+                      </div>
+                      <div className="card-section card-main">
+                        <div className="card-subsection">
+                          <p>{event.name}</p>
+                        </div>
+                      </div>
+                      <div className="card-section card-footer">
+                        <div className={`card-subsection status ${event.status.toLowerCase()}`}>
+                          <p>{event.status}</p>
+                        </div>
+                        <div className="card-subsection">
+                          <p>{event.date}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))
                 }
-                <div>{event.state}</div>
-                <div>{event.city}</div>
+
               </div>
-              <div className="card-main">
-                <h2>{event.name}</h2>
-              </div>
-              <div className="card-footer">
-                <div className={`status ${event.status.toLowerCase()}`}>{event.status}</div>
-                <div>{event.date}</div>
-              </div>
-            </div>
-          ))
+            ) : null)
         }
       </div>
     </main>

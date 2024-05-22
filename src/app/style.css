@@ -1,146 +1,71 @@
-main {
+.filters {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 2em;
+    gap: .5em;
+    width: 25em;
 }
 
 .sorting-buttons {
     display: flex;
-    gap: 1em;
-    padding: 2em;
+    justify-content: space-between;
 }
 
-button {
-    width: 10em;
-    height: 3em;
-    border-radius: .2em;
-    border: 1px solid;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1em;
-    font-size: 1em;
-}
-
-@media screen and (max-width: 500px) {
-    .sorting-buttons {
-        flex-direction: column;
-    }
-
-    input {
-        width: 16em !important;
-    }
-
-    button {
-        width: 16em !important;
-    }
-
-    .events-list {
-        width: 25em !important;
-    }
-}
-
-i {
-    font-size: 1.5em;
-}
-
-input {
-    width: 20em;
-    height: 3em;
-    border: 1px solid;
-    padding: 1em;
-    font-size: 1em;
-    border-radius: .5em;
+.sorting-buttons button {
+    width: 33%;
 }
 
 .events-list {
+    width: 40em;
     display: flex;
     flex-direction: column;
-    gap: 2em;
-    margin-bottom: 2em;
-    width: 50em;
-}
-
-.card {
-    max-width: 50em;
-    width: 100%;
-    text-align: center;
-    border: 1px solid rgba(246,247,249,.1);
-    border-radius: 0 0.5em 0.5em 0.5em;
-    background-color: #16181d;
-}
-
-.card i {
-    cursor: pointer;
-}
-
-.card i.fa-solid.fa-heart {
-    color: red;
-}
-
-.card > div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2em;
-}
-
-.favorite-events-list .card > div {
     gap: .5em;
 }
 
-.card-main {
-    padding: 1em;
+.card {
+    border-radius: 0 .5em .5em .5em;
+    background-color: #0e091f8a;
 }
 
-.card-header {
-    padding: .5em;
-    border-bottom: 1px solid rgba(246,247,249,.1);
-}
-
-.card-footer {
-    border-top: 1px solid rgba(246,247,249,.1);
-    padding: .5em;
-}
-
-.favorites-header {
+.card-section {
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 1em;
     gap: 1em;
-    height: 1em;
-}
-
-.favorite-events-list {
-    border-radius: .5em;
-    border: 1px solid rgba(246,247,249,.1);
     padding: .5em;
-    gap: 0;
 }
 
-.favorite-events-list .card {
-    margin-top: 1em;
+.card-subsection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-main:not(.favorites-list .card-main) {
+    padding: .5em;
+    background-color: #0e091f8a;
+}
+
+.favorites-list.events-list {
+    margin-top: .5em;
+    background-color: #453C67;
+    padding: .5em;
+    border-radius: 4px;
+}
+
+.group-header {
+    padding: .5em;
+}
+
+.group {
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
 }
 
 button.active {
-    background-color: rgb(88 196 220/1);
+    background-color: #eeb0ff;
 }
 
-.status {
-    font-weight: 700;
-}
-
-.status.open {
-    color: green;
-}
-
-.status.finished {
-    color: blue;
-}
-
-.status.closed {
-    color: red;
+@media screen and (max-width: 500px) {
+    .events-list {
+        width: 25em;
+    }
 }
