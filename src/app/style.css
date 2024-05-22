@@ -60,6 +60,22 @@
     gap: .5em;
 }
 
+.status {
+    font-weight: 700;
+}
+
+.status.open {
+    color: greenyellow;
+}
+
+.status.closed {
+    color: red;
+}
+
+.status.finished {
+    color: rgb(0, 166, 255);
+}
+
 button.active {
     background-color: #eeb0ff;
 }

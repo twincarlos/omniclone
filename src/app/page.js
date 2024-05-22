@@ -271,7 +271,7 @@ export default function Home() {
                         </div>
                       </div>
                       <div className="card-section card-main">
-                        <div className="card-subsection">
+                        <div className="card-subsection" onClick={() => console.log(event)}>
                           <p>{event.name}</p>
                         </div>
                       </div>
@@ -286,7 +286,6 @@ export default function Home() {
                     </div>
                   ))
                 }
-
               </div>
             ) : null)
         }
