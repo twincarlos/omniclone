@@ -188,7 +188,7 @@ export default function Home() {
 
   return (
     <main>
-      <div className="filters">
+      <section className="filters">
         <div className="input-filter">
           <input type="text" placeholder="Search events" onChange={e => setFilterText(e.target.value)} />
         </div>
@@ -209,8 +209,8 @@ export default function Home() {
             Sort by date
           </button>
         </div>
-      </div>
-      <div className="favorites-list events-list expandable-card">
+      </section>
+      <section className="favorites-list events-list expandable-card">
         <div className="card-section card-header expandable-card-header">
           <div className="card-subsection">
             {expandFavorites ? <i className="fa-solid fa-chevron-down" onClick={() => setExpandFavorites(false)} /> : <i className="fa-solid fa-chevron-up" onClick={() => setExpandFavorites(true)} />}
@@ -236,8 +236,8 @@ export default function Home() {
             </div>
           )))
         }
-      </div>
-      <div className="events-list">
+      </section>
+      <section className="events-list">
         {
           groups.map((group, groupIndex) => group.events.filter(event =>
           (
@@ -288,7 +288,7 @@ export default function Home() {
             </div>
           ) : null)
         }
-      </div>
+      </section>
     </main>
   );
 };
