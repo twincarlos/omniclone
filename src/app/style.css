@@ -13,10 +13,11 @@
     width: 33%;
 }
 
-.favorites-list.events-list {
-    margin-top: .5em;
+.favorites-list.tournaments-list {
+    margin: .5em;
     padding: .5em;
     border-radius: 4px;
+    width: 96%;
 }
 
 .status {
@@ -41,7 +42,7 @@ button.active {
     border: 1px solid white;
 }
 
-.event-details span {
+.tournament-details span {
     background-color: var(--secondary-color);
     border-radius: 5em;
     padding: .5em 1em;
@@ -50,13 +51,18 @@ button.active {
     color: white;
 }
 
-.event-details {
+.tournament-details {
     display: flex;
     align-items: center;
     gap: .5em;
 }
 
-.event-details i {
+.tournament-details i {
+    cursor: pointer;
+    color: var(--tertiary-color);
     font-size: 1.5em;
-    color: var(--secondary-color);
+}
+
+.all-tournaments .list-card {
+    flex-direction: column;
 }

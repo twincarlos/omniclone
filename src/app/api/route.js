@@ -25,14 +25,15 @@ export async function GET() {
             } else if (input.attr("value") === "Results") {
                 inputValue = "Finished"
             } else {
-                inputValue = "TBD" 
+                inputValue = "TBD"
             };
             details.push({ status: inputValue });
             return counter1++;
         };
         if (counter1 === 1) {
             const input = $(element).children("input").first();
-            details[detailsIndex] = { ...details[detailsIndex], action: input.attr("onclick") }
+            const url = input.attr("onclick").slice("13").split("'")[0];
+            details[detailsIndex] = { ...details[detailsIndex], url }
             return counter1++;
         };
         if (counter1 === 2) {
@@ -80,5 +81,24 @@ export async function GET() {
         };
     };
 
-    return new Response(JSON.stringify(details));
+    details.sort((a, b) => {
+        if (a.state < b.state) return -1;
+        if (a.state > b.state) return 1;
+        return 0;
+    });
+
+    const groupedTournaments = [];
+    details.forEach(tournament => {
+        const currentGroup = groupedTournaments[groupedTournaments.length - 1]?.group;
+        if (currentGroup === tournament.state) {
+            groupedTournaments[groupedTournaments.length - 1].tournaments.push(tournament);
+        } else {
+            groupedTournaments.push({
+                group: tournament.state,
+                tournaments: [tournament]
+            });
+        };
+    });
+
+    return new Response(JSON.stringify(groupedTournaments));
 }
