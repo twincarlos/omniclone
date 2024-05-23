@@ -9,6 +9,7 @@ export default function Home() {
   const [sorting, setSorting] = useState({ category: "state", type: "ASC" });
   const [favorites, setFavorites] = useState({});
   const [expandFavorites, setExpandFavorites] = useState(true);
+  const [viewMoreLess, setViewMoreLess] = useState(null);
 
   useEffect(() => {
     const localStorageFavorites = localStorage.getItem("favorites");
@@ -238,13 +239,13 @@ export default function Home() {
       </div>
       <div className="events-list">
         {
-          groups.map((group, index) => group.events.filter(event =>
+          groups.map((group, groupIndex) => group.events.filter(event =>
           (
             event.name.toLowerCase().includes(filterText.toLowerCase()) ||
             event.state.toLowerCase().includes(filterText.toLowerCase()) ||
             event.city.toLowerCase().includes(filterText.toLowerCase())
           )).length ? (
-            <div className="group" key={index}>
+            <div className="group" key={groupIndex}>
               <div className="group-header">
                 <h2>{group.group}</h2>
               </div>
@@ -256,7 +257,7 @@ export default function Home() {
                     event.state.toLowerCase().includes(filterText.toLowerCase()) ||
                     event.city.toLowerCase().includes(filterText.toLowerCase())
                   )
-                  ).map(event => (
+                  ).map((event, eventIndex) => ((eventIndex < 3) || (eventIndex >= 3 && groupIndex === viewMoreLess)) ? (
                     <div key={event.id} className="list-card">
                       <div className="event-name">
                         <p>{event.name}</p>
@@ -270,7 +271,18 @@ export default function Home() {
                         <span>{event.date}</span>
                       </div>
                     </div>
-                  ))
+                  ) : null)
+                }
+              </div>
+              <div className="group-footer">
+                {
+                  group.events.filter(event =>
+                    (
+                      event.name.toLowerCase().includes(filterText.toLowerCase()) ||
+                      event.state.toLowerCase().includes(filterText.toLowerCase()) ||
+                      event.city.toLowerCase().includes(filterText.toLowerCase())
+                    )
+                    ).length > 3 ? (<button onClick={() => groupIndex === viewMoreLess ? setViewMoreLess(null) : setViewMoreLess(groupIndex)}>{groupIndex === viewMoreLess ? "View less" : "View more"}</button>) : null
                 }
               </div>
             </div>

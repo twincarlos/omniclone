@@ -8,6 +8,7 @@
   --odd-list-card-background-color: #e1e1e1;
   --primary-color: #1c50af;
   --secondary-color: #2f8adc;
+  --border-color: #6b9fff;
 }
 
 * {
@@ -41,6 +42,7 @@ button {
   height: 3em;
   border: none;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 input {
@@ -58,6 +60,21 @@ input {
 
 .group-header {
   padding: .5em;
+  color: white;
+}
+
+.group-footer {
+  padding: .5em;
+  color: white;
+  font-weight: 600;
+}
+
+.group-footer button {
+  width: 6em;
+  font-size: 1em;
+  height: 1.5em;
+  background-color: var(--primary-color);
+  border: 1px solid var(--border-color);
   color: white;
 }
 
