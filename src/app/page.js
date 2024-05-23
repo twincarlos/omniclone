@@ -209,8 +209,8 @@ export default function Home() {
           </button>
         </div>
       </div>
-      <div className="favorites-list events-list">
-        <div className="card-section card-header">
+      <div className="favorites-list events-list expandable-card">
+        <div className="card-section card-header expandable-card-header">
           <div className="card-subsection">
             {expandFavorites ? <i className="fa-solid fa-chevron-down" onClick={() => setExpandFavorites(false)} /> : <i className="fa-solid fa-chevron-up" onClick={() => setExpandFavorites(true)} />}
           </div>
@@ -225,7 +225,7 @@ export default function Home() {
               <div className="card-section card-main">
                 <div className="card-subsection">
                   {
-                    favorites[event.id] != undefined ? <i className="fa-solid fa-heart" onClick={() => updateFavorites(event.id)} /> : <i className="fa-regular fa-heart" onClick={() => updateFavorites(event.id)} />
+                    favorites[event.id] != undefined ? <i className="fa-solid fa-star" onClick={() => updateFavorites(event.id)} /> : <i className="fa-regular fa-star" onClick={() => updateFavorites(event.id)} />
                   }
                 </div>
                 <div className="card-subsection">
@@ -239,55 +239,42 @@ export default function Home() {
       <div className="events-list">
         {
           groups.map((group, index) => group.events.filter(event =>
-            (favorites[event.id] === undefined) &&
-            (
-              event.name.toLowerCase().includes(filterText.toLowerCase()) ||
-              event.state.toLowerCase().includes(filterText.toLowerCase()) ||
-              event.city.toLowerCase().includes(filterText.toLowerCase())
-            )).length ? (
-              <div className="group" key={index}>
-                <div className="group-header">
-                  <h2>{group.group}</h2>
-                </div>
+          (
+            event.name.toLowerCase().includes(filterText.toLowerCase()) ||
+            event.state.toLowerCase().includes(filterText.toLowerCase()) ||
+            event.city.toLowerCase().includes(filterText.toLowerCase())
+          )).length ? (
+            <div className="group" key={index}>
+              <div className="group-header">
+                <h2>{group.group}</h2>
+              </div>
+              <div className="group-list">
                 {
                   group.events.filter(event =>
-                    (favorites[event.id] === undefined) &&
-                    (
-                      event.name.toLowerCase().includes(filterText.toLowerCase()) ||
-                      event.state.toLowerCase().includes(filterText.toLowerCase()) ||
-                      event.city.toLowerCase().includes(filterText.toLowerCase())
-                    )
+                  (
+                    event.name.toLowerCase().includes(filterText.toLowerCase()) ||
+                    event.state.toLowerCase().includes(filterText.toLowerCase()) ||
+                    event.city.toLowerCase().includes(filterText.toLowerCase())
+                  )
                   ).map(event => (
-                    <div key={event.id} className="card">
-                      <div className="card-section card-header">
-                        <div className="card-subsection">
-                          {favorites[event.id] != undefined ? <i className="fa-solid fa-heart" onClick={() => updateFavorites(event.id)} /> : <i className="fa-regular fa-heart" onClick={() => updateFavorites(event.id)} />}
-                        </div>
-                        <div className="card-subsection">
-                          <p>{event.state}</p>
-                        </div>
-                        <div className="card-subsection">
-                          <p>{event.city}</p>
-                        </div>
+                    <div key={event.id} className="list-card">
+                      <div className="event-name">
+                        <p>{event.name}</p>
                       </div>
-                      <div className="card-section card-main">
-                        <div className="card-subsection" onClick={() => console.log(event)}>
-                          <p>{event.name}</p>
-                        </div>
-                      </div>
-                      <div className="card-section card-footer">
-                        <div className={`card-subsection status ${event.status.toLowerCase()}`}>
-                          <p>{event.status}</p>
-                        </div>
-                        <div className="card-subsection">
-                          <p>{event.date}</p>
-                        </div>
+                      <div className="event-details">
+                        {
+                          favorites[event.id] != undefined ? <i className="fa-solid fa-star" onClick={() => updateFavorites(event.id)} /> : <i className="fa-regular fa-star" onClick={() => updateFavorites(event.id)} />
+                        }
+                        <span className={`status ${event.status.toLowerCase()}`}>{event.status}</span>
+                        <span>{event.city}</span>
+                        <span>{event.date}</span>
                       </div>
                     </div>
                   ))
                 }
               </div>
-            ) : null)
+            </div>
+          ) : null)
         }
       </div>
     </main>

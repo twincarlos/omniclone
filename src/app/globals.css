@@ -2,7 +2,12 @@
   --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
     "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
     "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
-  --border-color: #7c6f93;
+  --border-color: #F0EBE3;
+  --background-color: linear-gradient(#153470, #040d2e);
+  --even-list-card-background-color: #ffffff;
+  --odd-list-card-background-color: #e1e1e1;
+  --primary-color: #1c50af;
+  --secondary-color: #2f8adc;
 }
 
 * {
@@ -15,8 +20,7 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  background-color: #2D3250;
-  color: #d8d8d8;
+  background-image: var(--background-color);
 }
 
 a {
@@ -29,6 +33,7 @@ main {
   flex-direction: column;
   align-items: center;
   padding: 2em;
+  min-height: 100dvh;
 }
 
 button {
@@ -44,4 +49,54 @@ input {
   height: 3em;
   border-radius: 5px;
   border: none;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+}
+
+.group-header {
+  padding: .5em;
+  color: white;
+}
+
+.group-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  border-radius: 0 .5em .5em .5em;
+}
+
+.card-section {
+  display: flex;
+  gap: 1em;
+  padding: .5em;
+}
+
+.card-subsection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.list-card {
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+  padding: .5em;
+}
+
+.list-card:nth-child(odd) {
+  background-color: var(--odd-list-card-background-color);
+}
+
+.list-card:nth-child(even) {
+  background-color: var(--even-list-card-background-color);
+}
+
+.expandable-card {
+  background-color: white;
 }
