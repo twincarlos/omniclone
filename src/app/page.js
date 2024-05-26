@@ -217,7 +217,7 @@ export default function Home() {
                   }
                 </div>
                 <div className="card-subsection">
-                  <Link href={`/tournament/${tournament.url}#${tournament.state}#${tournament.city}#${tournament.date}`}>{tournament.name}</Link>
+                  <Link href={`/tournament/${tournament.url}#${tournament.pdf}#${tournament.state}#${tournament.city}#${tournament.date}`}>{tournament.name}</Link>
                 </div>
               </div>
             </div>
