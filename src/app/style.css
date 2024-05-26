@@ -43,7 +43,7 @@ button.active {
 }
 
 .tournament-details span {
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
     border-radius: 5em;
     padding: .5em 1em;
     font-size: 12px;
@@ -59,7 +59,7 @@ button.active {
 
 .tournament-details i {
     cursor: pointer;
-    color: var(--tertiary-color);
+    color: var(--primary-color);
     font-size: 1.5em;
 }
 

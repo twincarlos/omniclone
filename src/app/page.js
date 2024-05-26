@@ -247,7 +247,7 @@ export default function Home() {
                   ).map((tournament, tournamentIndex) => ((tournamentIndex < 3) || (tournamentIndex >= 3 && groupIndex === viewMoreLess)) ? (
                     <div key={tournament.id} className="list-card">
                       <div className="tournament-name">
-                        <Link href={`/tournament/${tournament.url}#${tournament.state}#${tournament.city}#${tournament.date}`}>{tournament.name}</Link>
+                        <Link href={`/tournament/${tournament.url}#${tournament.pdf}#${tournament.state}#${tournament.city}#${tournament.date}`}>{tournament.name}</Link>
                       </div>
                       <div className="tournament-details">
                         {

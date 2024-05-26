@@ -18,9 +18,10 @@ export default function Event() {
             const data = await response.json();
             setTournament({
                 name: data.name,
-                state: url[1].split("%20").join(" "),
-                city: url[2].split("%20").join(" "),
-                date: url[3].split("%20-%20").join(" - "),
+                state: url[2].split("%20").join(" "),
+                city: url[3].split("%20").join(" "),
+                date: url[4].split("%20-%20").join(" - "),
+                pdf: url[1],
                 players: data.players,
                 events: data.events
             });
@@ -39,8 +40,18 @@ export default function Event() {
 
     return (
         <main className="tournament-page">
-            <section className="back">
-                <Link href="/" className="back-link"><i className="fa-solid fa-chevron-left" /> Back</Link>
+            <section className="tournament-header">
+                <div>
+                    <Link href="/" className="back-link"><i className="fa-solid fa-chevron-left" /> Back</Link>
+                </div>
+                <div>
+                    {
+                        tournament.pdf === "undefined" ? null :
+                        <Link href={`https://omnipong.com/${tournament.pdf}`} target="_blank" className="pdf">
+                            <i className="fa-regular fa-file-pdf" /><p>Prospect</p>
+                        </Link>
+                    }
+                </div>
             </section>
             <section className="header">
                 <div className="page-title">

@@ -216,10 +216,6 @@ input {
   align-items: center;
 }
 
-section.back {
-  padding: 0 0 2em 0;
-}
-
 main.loading {
   display: flex;
   flex-direction: column;
@@ -242,4 +238,29 @@ section.no-players-registered {
 
 section.no-players-registered h2 {
   color: white;
+}
+
+section.tournament-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+a.pdf {
+  background-color: transparent;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  gap: .5em;
+  border: 1px solid white;
+  padding: .5em 1em;
+  border-radius: .5em;
+}
+
+a.pdf i {
+  font-size: 1em;
+}
+
+section.no-players-registered img.gif {
+  border-radius: 1em;
 }
