@@ -14,7 +14,13 @@ export default function Event() {
     useEffect(() => {
         const url = window.location.href.split("/tournament/")[1].split("#");
         const fetchData = async () => {
-            const response = await fetch(`/api/tournament/${url[0]}`);
+            const response = await fetch(`/api/tournament/${url[0]}`, {
+                headers: {
+                    'Cache-Control': 'no-cache',
+                    'Pragma': 'no-cache',
+                    'Expires': '0'
+                }
+            });
             const data = await response.json();
             setTournament({
                 name: data.name,
@@ -47,9 +53,9 @@ export default function Event() {
                 <div>
                     {
                         tournament.pdf === "undefined" ? null :
-                        <Link href={`https://omnipong.com/${tournament.pdf}`} target="_blank" className="pdf">
-                            <i className="fa-regular fa-file-pdf" /><p>Prospect</p>
-                        </Link>
+                            <Link href={`https://omnipong.com/${tournament.pdf}`} target="_blank" className="pdf">
+                                <i className="fa-regular fa-file-pdf" /><p>Prospect</p>
+                            </Link>
                     }
                 </div>
             </section>

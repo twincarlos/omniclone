@@ -1,12 +1,17 @@
-import cheerio from "cheerio";
+import { load } from "cheerio";
 
-export async function GET(req, res) {
-    const url = req.url.split("/");
-    const tournamentUrlPlayers = url[url.length - 1];
+export async function GET(req, { params }) {
+    const tournamentId = params.tournamentId;
 
-    const playersData = await fetch(`https://www.omnipong.com/${tournamentUrlPlayers}`); // fetches data
+    const playersData = await fetch(`https://www.omnipong.com/T-tourney.asp?t=101&r=${tournamentId}`, {
+        headers: {
+            'Cache-Control': 'no-cache',
+            'Pragma': 'no-cache',
+            'Expires': '0'
+        }
+    }); // fetches data
     const playersHtml = await playersData.text(); // converts data into html text
-    const $p = cheerio.load(playersHtml); // loads html text
+    const $p = load(playersHtml); // loads html text
 
     if ($p("input.omnipong_blue4").length === 0) {
         return new Response(JSON.stringify({
@@ -35,10 +40,15 @@ export async function GET(req, res) {
             };
         });
 
-        const tournamentUrlEvents = $p("[value=\"Sort by Event\"]").attr("onclick").slice(13).split("&h='")[0];
-        const eventsData = await fetch(`https://www.omnipong.com/${tournamentUrlEvents}`); // fetches data
+        const eventsData = await fetch(`https://www.omnipong.com/T-tourney.asp?t=102&r=${tournamentId}`, {
+            headers: {
+                'Cache-Control': 'no-cache',
+                'Pragma': 'no-cache',
+                'Expires': '0'
+            }
+        }); // fetches data
         const eventsHtml = await eventsData.text(); // converts data into html text
-        const $e = cheerio.load(eventsHtml); // loads html text
+        const $e = load(eventsHtml); // loads html text
 
         const events = [];
         $e("center > table").each((index, element) => {
@@ -86,13 +96,8 @@ export async function GET(req, res) {
 
         return new Response(JSON.stringify({
             name: $p("center > h3").text().split("-")[0].trim(),
-            players: players.sort((a, b) => {
-                if (Number(a.rating) < Number(b.rating)) return 1;
-                if (Number(a.rating) > Number(b.rating)) return -1;
-                return 0;
-            }),
+            players,
             events
         }));
     };
-
 }

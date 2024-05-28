@@ -20,7 +20,13 @@ export default function Home() {
     };
 
     const fetchData = async () => {
-      const response = await fetch('/api');
+      const response = await fetch('/api', {
+        headers: {
+          'Cache-Control': 'no-cache',
+          'Pragma': 'no-cache',
+          'Expires': '0'
+        }
+      });
       const data = await response.json();
       setGroups(data);
     };
@@ -167,11 +173,11 @@ export default function Home() {
 
   if (!groups.length) {
     return (
-        <main className="loading">
-            <img className="gif" src={"https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmc0bGduamJqb3V1d2E3YW1nNHBhaTczdzA2bXEyMWgwbXc5eHhoMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l41lIvPtFdU3cLQjK/giphy.gif"}></img>
-        </main>
+      <main className="loading">
+        <img className="gif" src={"https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmc0bGduamJqb3V1d2E3YW1nNHBhaTczdzA2bXEyMWgwbXc5eHhoMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l41lIvPtFdU3cLQjK/giphy.gif"}></img>
+      </main>
     );
-};
+  };
 
   return (
     <main className="all-tournaments">
@@ -217,7 +223,7 @@ export default function Home() {
                   }
                 </div>
                 <div className="card-subsection">
-                  <Link href={`/tournament/${tournament.url}#${tournament.pdf}#${tournament.state}#${tournament.city}#${tournament.date}`}>{tournament.name}</Link>
+                  <Link href={`/tournament/${tournament.id}#${tournament.pdf}#${tournament.state}#${tournament.city}#${tournament.date}`}>{tournament.name}</Link>
                 </div>
               </div>
             </div>
@@ -247,7 +253,7 @@ export default function Home() {
                   ).map((tournament, tournamentIndex) => ((tournamentIndex < 3) || (tournamentIndex >= 3 && groupIndex === viewMoreLess)) ? (
                     <div key={tournament.id} className="list-card">
                       <div className="tournament-name">
-                        <Link href={`/tournament/${tournament.url}#${tournament.pdf}#${tournament.state}#${tournament.city}#${tournament.date}`}>{tournament.name}</Link>
+                        <Link href={`/tournament/${tournament.id}#${tournament.pdf}#${tournament.state}#${tournament.city}#${tournament.date}`}>{tournament.name}</Link>
                       </div>
                       <div className="tournament-details">
                         {

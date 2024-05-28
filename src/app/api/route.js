@@ -1,7 +1,13 @@
 import cheerio from "cheerio";
 
 export async function GET() {
-    const data = await fetch("https://www.omnipong.com/t-tourney.asp?e=0"); // fetches data
+    const data = await fetch("https://www.omnipong.com/t-tourney.asp?e=0", {
+        headers: {
+            'Cache-Control': 'no-cache',
+            'Pragma': 'no-cache',
+            'Expires': '0'
+        }
+    }); // fetches data
     const html = await data.text(); // converts data into html text
     const $ = cheerio.load(html); // loads html text
 
@@ -28,44 +34,39 @@ export async function GET() {
                 inputValue = "TBD"
             };
             details.push({ status: inputValue });
-            return counter1++;
-        };
-        if (counter1 === 1) {
+        }
+        // open_window('T-tourney.asp?t=100&r=3834','_self')
+        else if (counter1 === 1) {
             const input = $(element).children("input").first();
-            const url = input.attr("onclick").slice("13").split("'")[0];
-            details[detailsIndex] = { ...details[detailsIndex], url }
-            return counter1++;
-        };
-        if (counter1 === 2) {
+            const id = input.attr("onclick").split("&r=")[1].split("'")[0];
+            details[detailsIndex] = { ...details[detailsIndex], id }
+        }
+        else if (counter1 === 2) {
             const a = $(element).children("a");
             if (a.length > 0) {
                 details[detailsIndex] = { ...details[detailsIndex], pdf: a.attr("href"), name: a.text() }
             } else {
                 details[detailsIndex] = { ...details[detailsIndex], name: $(element).text() }
             };
-            return counter1++;
-        };
-        if (counter1 === 3) {
+        }
+        else if (counter1 === 3) {
             details[detailsIndex] = { ...details[detailsIndex], city: $(element).text() }
-            return counter1++;
-        };
-        if (counter1 === 4) {
+        }
+        else if (counter1 === 4) {
             details[detailsIndex] = { ...details[detailsIndex], date: $(element).text() }
-            return counter1++;
-        };
-        if (counter1 === 5) {
+        }
+        else if (counter1 === 5) {
             const a = $(element).children("a").first();
             details[detailsIndex] = { ...details[detailsIndex], contactUrl: $(a).attr("href"), contactName: $(element).text() };
-            return counter1++;
-        };
-        if (counter1 === 6) {
+        }
+        else if (counter1 === 6) {
             details[detailsIndex] = { ...details[detailsIndex], ballInfo: $(element).text() }
-            return counter1++;
-        };
-        if (counter1 === 7) {
+        }
+        else if (counter1 === 7) {
             details[detailsIndex] = { ...details[detailsIndex], usattRating: $(element).text() }
             return counter1 = 0;
         };
+        return counter1++;
     });
 
     const numbersOfRowsPerState = [];
@@ -76,16 +77,10 @@ export async function GET() {
     let counter2 = 0;
     for (let i = 0; i < numbersOfRowsPerState.length; i++) {
         for (let j = 0; j < numbersOfRowsPerState[i]; j++) {
-            details[counter2] = { ...details[counter2], state: titles[i], id: counter2 }
+            details[counter2] = { ...details[counter2], state: titles[i] }
             counter2++;
         };
     };
-
-    details.sort((a, b) => {
-        if (a.state < b.state) return -1;
-        if (a.state > b.state) return 1;
-        return 0;
-    });
 
     const groupedTournaments = [];
     details.forEach(tournament => {
