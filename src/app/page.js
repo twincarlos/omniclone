@@ -214,7 +214,7 @@ export default function Home() {
         </div>
         {
           expandFavorites &&
-          groups.map(group => group.tournaments.filter(tournament => favorites[tournament.id] != undefined).map(tournament => (
+          groups.map(group => group.tournaments.filter(tournament => (favorites[tournament.id] != undefined) && (tournament.state != "USATT Events")).map(tournament => (
             <div key={tournament.id} className="card">
               <div className="card-section card-main">
                 <div className="card-subsection">
