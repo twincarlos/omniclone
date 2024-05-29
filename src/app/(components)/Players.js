@@ -1,5 +1,3 @@
-import "./tournament.css";
-
 export function Players({ players }) {
     return (
         <>

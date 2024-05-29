@@ -11,9 +11,12 @@ export async function GET(req, { params }) {
         const player = {};
         $(element).children("td.list-column").each((index, element) => {
             if (index === 1) {
-                player["firstName"] = $(element).children("a").first().text();
+                const elementChild = $(element).children("a").first();
+                const split1 = $(elementChild).attr("href").split("/");
+                player["firstName"] = $(elementChild).text();
+                player["id"] = split1[split1.length - 1];
             } else if (index === 2) {
-                player["lasttName"] = $(element).children("a").first().text();
+                player["lastName"] = $(element).children("a").first().text();
             } else if (index === 3) {
                 player["location"] = $(element).text();
             } else if (index === 4) {

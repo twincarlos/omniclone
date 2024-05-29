@@ -3,8 +3,8 @@
 import "./tournament.css";
 
 import { useState, useEffect } from "react";
-import { Events } from "./Events";
-import { Players } from "./Players";
+import { Events } from "@/app/(components)/Events";
+import { Players } from "@/app/(components)/Players";
 import Link from "next/link";
 
 export default function Event() {

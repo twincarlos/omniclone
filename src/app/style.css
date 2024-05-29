@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: column;
     gap: .5em;
+    background-color: white;
+    border-radius: 5px;
 }
 
 .sorting-buttons {
@@ -14,10 +16,9 @@
 }
 
 .favorites-list.tournaments-list {
-    margin: .5em;
     padding: .5em;
     border-radius: 4px;
-    width: 96%;
+    border: 1px solid white;
 }
 
 .status {
@@ -65,4 +66,133 @@ button.active {
 
 .all-tournaments .list-card {
     flex-direction: column;
+}
+
+.menu {
+    border: 1px solid white;
+    border-radius: 5px;
+    color: white;
+}
+
+.top-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sync-usatt button {
+    color: white;
+    font-size: 16px;
+    background-color: var(--primary-color);
+    border: 2px solid var(--secondary-color);
+}
+
+.menu .hamburger-icon i {
+    font-size: 2em;
+    padding: 0 5px;
+}
+
+.bottom-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5em 0 0 0;
+    gap: .5em;
+}
+
+.bottom-menu a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    border-radius: 5px;
+    height: 2em;
+}
+
+.sync-usatt-modal {
+    width: 20em;
+    height: 40em;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1em;
+    border-radius: .5em;
+    gap: .5em;
+}
+
+.modal-header {
+    border: 2px solid var(--primary-color);
+    height: fit-content;
+    border-radius: .5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.empty-list i {
+    color: var(--primary-color);
+    font-size: 4em;
+    opacity: .5;
+}
+
+.modal-content {
+    height: 32em;
+    color: black;
+    overflow-y: scroll;
+}
+
+.player-lookup-result-top {
+    display: flex;
+    gap: 1em;
+    font-weight: 600;
+}
+
+.player-lookup-result.list-card {
+    gap: 0;
+}
+
+.exit-modal {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.exit-modal button {
+    background-color: transparent;
+    width: fit-content;
+}
+
+.exit-modal button i {
+    font-size: 2em;
+    color: var(--tertiary-color);
+}
+
+.my-rating-value {
+    font-size: 3em;
+    font-weight: 200;
+}
+
+.input-filter {
+    background-color: white;
+    border-radius: 5px;
+}
+
+section.tournaments-list {
+    padding: 0;
+}
+
+.my-rating-container {
+    display: flex;
+    align-items: flex-start;
+}
+
+.edit-rating-box button {
+    color: var(--tertiary-color);
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    font-size: 1.5em;
 }
