@@ -294,3 +294,74 @@ section.no-players-registered img.gif {
 .in-development h1 {
   font-weight: 200;
 }
+
+.header-title h1 {
+  font-weight: 200;
+  font-size: 2em;
+}
+
+.sync-usatt-modal {
+  width: 20em;
+  height: 40em;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1em;
+  border-radius: .5em;
+  gap: .5em;
+}
+
+.modal-input {
+  border: 2px solid var(--primary-color);
+  height: fit-content;
+  border-radius: .5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.empty-list i {
+  color: var(--primary-color);
+  font-size: 4em;
+  opacity: .5;
+}
+
+.modal-content {
+  height: 32em;
+  color: black;
+  overflow-y: scroll;
+}
+
+.player-lookup-result-top {
+  display: flex;
+  gap: 1em;
+  font-weight: 600;
+}
+
+.player-lookup-result.list-card {
+  gap: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-title {
+  color: black;
+  font-weight: 600;
+}
+
+.exit-modal button {
+  background-color: transparent;
+  width: fit-content;
+}
+
+.exit-modal button i {
+  font-size: 2em;
+  color: var(--tertiary-color);
+}

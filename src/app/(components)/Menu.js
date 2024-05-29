@@ -72,6 +72,7 @@ export function Menu({ setMyRating, myRating }) {
                                             <div className="player-lookup-result list-card" key={player.id} onClick={() => {
                                                 localStorage.setItem("playerId", player.id);
                                                 setMyRating(player.rating);
+                                                setPlayers([]);
                                                 setOpenModal(false);
                                             }}>
                                                 <div className="player-lookup-result-top">
