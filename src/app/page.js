@@ -20,7 +20,7 @@ export default function Home() {
     };
 
     const fetchData = async () => {
-      const response = await fetch('/api', {
+      const response = await fetch('/api/tournaments', {
         headers: {
           'Cache-Control': 'no-cache',
           'Pragma': 'no-cache',
