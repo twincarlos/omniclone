@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
-import { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 import debounce from 'lodash/debounce';
 
 export function Menu({ setMyRating, myRating }) {
@@ -45,8 +45,8 @@ export function Menu({ setMyRating, myRating }) {
             {
                 openMenu ? (
                     <div className="bottom-menu">
-                        <Link href="/">Player watch</Link>
-                        <Link href="/">Rating calculator</Link>
+                        <Link href="/player-watch">Player watch</Link>
+                        <Link href="/rating-calculator">Rating calculator</Link>
                     </div>
                 ) : null
             }
@@ -54,10 +54,15 @@ export function Menu({ setMyRating, myRating }) {
                 openModal ? (
                     <div className="modal">
                         <div className="sync-usatt-modal">
-                            <div className="exit-modal">
-                                <button onClick={() => setOpenModal(false)}><i className="fa-regular fa-circle-xmark" /></button>
-                            </div>
                             <div className="modal-header">
+                                <div className="modal-title">
+                                    <p>USATT Rating Lookup</p>
+                                </div>
+                                <div className="exit-modal">
+                                    <button onClick={() => setOpenModal(false)}><i className="fa-regular fa-circle-xmark" /></button>
+                                </div>
+                            </div>
+                            <div className="modal-input">
                                 <input type="text" placeholder="Search for a USATT member" onChange={e => debouncedFetch(e.target.value)} />
                             </div>
                             <div className="modal-content">

@@ -285,3 +285,12 @@ section.no-players-registered img.gif {
   justify-content: center;
   align-items: center;
 }
+
+.in-development {
+  color: white;
+  padding: 5em 0;
+}
+
+.in-development h1 {
+  font-weight: 200;
+}

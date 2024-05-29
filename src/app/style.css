@@ -121,7 +121,7 @@ button.active {
     gap: .5em;
 }
 
-.modal-header {
+.modal-input {
     border: 2px solid var(--primary-color);
     height: fit-content;
     border-radius: .5em;
@@ -152,9 +152,15 @@ button.active {
     gap: 0;
 }
 
-.exit-modal {
+.modal-header {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-title {
+    color: black;
+    font-weight: 600;
 }
 
 .exit-modal button {
