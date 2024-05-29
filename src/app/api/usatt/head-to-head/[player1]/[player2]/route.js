@@ -1,7 +1,13 @@
 import { load } from "cheerio";
 
 export async function GET(req, { params }) {
-    const data = await fetch(`https://usatt.simplycompete.com/t/hh?p1=${params.player1}&p2=${params.player2}`);
+    const data = await fetch(`https://usatt.simplycompete.com/t/hh?p1=${params.player1}&p2=${params.player2}`, {
+        headers: {
+            'Cache-Control': 'no-cache',
+            'Pragma': 'no-cache',
+            'Expires': '0'
+        }
+    });
     const html = await data.text();
     const $ = load(html);
 
