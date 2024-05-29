@@ -18,20 +18,22 @@ export default function Home() {
 
   useEffect(() => {
     const localPlayerId = localStorage.getItem("playerId");
+    const fetchPlayerData = async () => {
+      const response = await fetch(`/api/usatt/player-profile/${localPlayerId}`, {
+        headers: {
+          'Cache-Control': 'no-cache',
+          'Pragma': 'no-cache',
+          'Expires': '0'
+        }
+      });
+      const data = await response.json();
+      setLoadingRating(false);
+      setMyRating(data.rating);
+    };
     if (localPlayerId) {
-      const fetchPlayerData = async () => {
-        const response = await fetch(`/api/usatt/player-profile/${localPlayerId}`, {
-          headers: {
-            'Cache-Control': 'no-cache',
-            'Pragma': 'no-cache',
-            'Expires': '0'
-          }
-        });
-        const data = await response.json();
-        setMyRating(data.rating);
-        setLoadingRating(false);
-      };
       fetchPlayerData();
+    } else {
+      setLoadingRating(false);
     };
 
     const localStorageFavorites = localStorage.getItem("favorites");
