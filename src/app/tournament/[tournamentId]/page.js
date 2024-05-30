@@ -7,7 +7,7 @@ import { Events } from "@/app/(components)/Events";
 import { Players } from "@/app/(components)/Players";
 import Link from "next/link";
 
-export default function Event() {
+export default function Tournament() {
     const [category, setCategory] = useState("Players");
     const [tournament, setTournament] = useState(null);
 

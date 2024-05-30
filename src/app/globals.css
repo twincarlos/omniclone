@@ -44,7 +44,8 @@ main {
 }
 
 section {
-  width: 100%;
+  max-width: 800px;
+  width: 90vw;
   padding: .5em;
 }
 
@@ -300,8 +301,8 @@ section.no-players-registered img.gif {
   font-size: 2em;
 }
 
-.sync-usatt-modal {
-  width: 20em;
+.modal-container {
+  width: 80vw;
   height: 40em;
   background-color: white;
   display: flex;
@@ -310,6 +311,7 @@ section.no-players-registered img.gif {
   padding: 1em;
   border-radius: .5em;
   gap: .5em;
+  max-width: 500px;
 }
 
 .modal-input {
@@ -364,4 +366,11 @@ section.no-players-registered img.gif {
 .exit-modal button i {
   font-size: 2em;
   color: var(--tertiary-color);
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
 }

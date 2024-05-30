@@ -57,7 +57,7 @@ export async function GET(req, { params }) {
                 const event = {};
                 trs.each((index, element) => {
                     if (index === 0) {
-                        const eventData1 = $e(element).children("th").first().text().split("-");
+                        const eventData1 = $e(element).children("th").first().text().split(" - ");
                         if (eventData1.length === 1) {
                             event["name"] = eventData1[0].split("Scheduled for: ")[0].trim();
                             event["maxSlots"] = null;

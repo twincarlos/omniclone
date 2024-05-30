@@ -1,22 +1,15 @@
 import { useState } from "react";
 import Link from "next/link";
-import { useCallback } from "react";
-import debounce from 'lodash/debounce';
+import { UsattModal } from "./UsattModal";
 
 export function Menu({ setMyRating, myRating }) {
     const [openMenu, setOpenMenu] = useState(false);
     const [openModal, setOpenModal] = useState(false);
-    const [players, setPlayers] = useState([]);
-    const debouncedFetch = useCallback(
-        debounce(keyword => {
-            if (keyword.length) {
-                fetch(`/api/usatt/player-lookup/${keyword}`)
-                    .then(response => response.json())
-                    .then(data => setPlayers(data));
-            } else {
-                setPlayers([]);
-            };
-        }, 500), []);
+
+    function modalFunction(player) {
+        localStorage.setItem("playerId", player.id);
+        setMyRating(player.rating);
+    };
 
     return (
         <section className="menu">
@@ -45,54 +38,20 @@ export function Menu({ setMyRating, myRating }) {
             {
                 openMenu ? (
                     <div className="bottom-menu">
-                        <Link href="/player-watch">Player watch</Link>
-                        <Link href="/rating-calculator">Rating calculator</Link>
+                        <div className="row row-1">
+                            <Link href="/player-watch">Player watch</Link>
+                            <Link href="/rating-calculator">Rating calculator</Link>
+                        </div>
+                        <div className="row row-2">
+                            <Link href="/head-to-head">Head to Head</Link>
+                            <Link href="/theme-selector">Theme selector</Link>
+                        </div>
                     </div>
                 ) : null
             }
             {
                 openModal ? (
-                    <div className="modal">
-                        <div className="sync-usatt-modal">
-                            <div className="modal-header">
-                                <div className="modal-title">
-                                    <p>USATT Rating Lookup</p>
-                                </div>
-                                <div className="exit-modal">
-                                    <button onClick={() => setOpenModal(false)}><i className="fa-regular fa-circle-xmark" /></button>
-                                </div>
-                            </div>
-                            <div className="modal-input">
-                                <input type="text" placeholder="Search for a USATT member" onChange={e => debouncedFetch(e.target.value)} />
-                            </div>
-                            <div className="modal-content">
-                                {
-                                    players.length ? (
-                                        players.map(player => (
-                                            <div className="player-lookup-result list-card" key={player.id} onClick={() => {
-                                                localStorage.setItem("playerId", player.id);
-                                                setMyRating(player.rating);
-                                                setPlayers([]);
-                                                setOpenModal(false);
-                                            }}>
-                                                <div className="player-lookup-result-top">
-                                                    <p>{player.rating}</p>
-                                                    <p>{player.firstName} {player.lastName}</p>
-                                                </div>
-                                                <div className="player-lookup-result-bottom">
-                                                    <p>{player.location}</p>
-                                                </div>
-                                            </div>
-                                        ))
-                                    ) : (
-                                        <div className="empty-list">
-                                            <i className="fa-solid fa-magnifying-glass" />
-                                        </div>
-                                    )
-                                }
-                            </div>
-                        </div>
-                    </div>
+                    <UsattModal modalTitle="USATT Rating Lookup" setOpenModal={setOpenModal} placeholderText="Search for USATT member" onClickFunction={modalFunction} />
                 ) : null
             }
         </section>

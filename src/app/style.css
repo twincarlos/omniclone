@@ -94,9 +94,12 @@ button.active {
 
 .bottom-menu {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: .5em 0 0 0;
+    flex-direction: column;
+    gap: .5em;
+}
+
+.bottom-menu .row {
+    display: flex;
     gap: .5em;
 }
 

@@ -50,5 +50,11 @@ export async function GET(req, { params }) {
         };
     });
 
-    return new Response(JSON.stringify(headToHeadData));
+    return new Response(JSON.stringify({
+        player1Score: $("td.text-center > h3").text().split(" - ")[0].trim(),
+        player2Score: $("td.text-center > h3").text().split(" - ")[1].trim(),
+        player1Name: $("td.text-center > p").text().split("vs")[0].trim(),
+        player2Name: $("td.text-center > p").text().split("vs")[1].trim(),
+        headToHeadData
+    }));
 }

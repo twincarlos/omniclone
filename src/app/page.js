@@ -72,8 +72,8 @@ export default function Home() {
   return (
     <main className="all-tournaments">
       <Menu setMyRating={setMyRating} myRating={myRating} />
-      <Filters setFilterText={setFilterText} />
       <Favorites groups={groups} expandFavorites={expandFavorites} setExpandFavorites={setExpandFavorites} favorites={favorites} updateFavorites={updateFavorites} />
+      <Filters setFilterText={setFilterText} />
       <GroupsList groups={groups} filterText={filterText} viewMoreLess={viewMoreLess} setViewMoreLess={setViewMoreLess} favorites={favorites} updateFavorites={updateFavorites} />
     </main>
   );

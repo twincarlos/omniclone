@@ -1,0 +1,98 @@
+.add-player-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.add-player-buttons button {
+    background-color: transparent;
+    color: white;
+    border: 1px solid;
+}
+
+section.head-to-head-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+}
+
+section.head-to-head-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}
+
+.player-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.player1-card {
+    align-items: flex-start;
+}
+
+.player2-card {
+    align-items: flex-end;
+}
+
+.player-name p {
+    font-weight: 200;
+}
+
+.head-to-head-count {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: white;
+    width: 100%;
+}
+
+.matches-count h1 {
+    font-weight: 200;
+    font-size: 3em;
+}
+
+.head-to-head-list {
+    width: 85vw;
+    max-width: 600px;
+    overflow: scroll;
+    height: 35em;
+}
+
+.head-to-head-list-card {
+    width: 80em;
+}
+
+.list-headers .head-to-head-cell {
+    font-weight: 600;
+}
+
+.head-to-head-cell {
+    text-wrap: balance;
+}
+
+.head-to-head-tournament {
+    width: 35%;
+}
+
+.head-to-head-date {
+    width: 10%;
+}
+
+.head-to-head-winner {
+    width: 20%;
+}
+
+.head-to-head-loser {
+    width: 20%;
+}
+
+.head-to-head-event {
+    width: 10%;
+}
+
+.head-to-head-score {
+    width: 5%;
+}
