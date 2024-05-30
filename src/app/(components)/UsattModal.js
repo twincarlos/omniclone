@@ -7,7 +7,13 @@ export function UsattModal({ modalTitle, setOpenModal, placeholderText, onClickF
     const debouncedFetch = useCallback(
         debounce(keyword => {
             if (keyword.length) {
-                fetch(`/api/usatt/player-lookup/${keyword}`)
+                fetch(`/api/usatt/player-lookup/${keyword}`, {
+        headers: {
+          'Cache-Control': 'no-cache',
+          'Pragma': 'no-cache',
+          'Expires': '0'
+        }
+      })
                     .then(response => response.json())
                     .then(data => setPlayers(data))
             } else {
