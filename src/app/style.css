@@ -141,3 +141,38 @@ section.tournaments-list {
     background: transparent;
     font-size: 1.5em;
 }
+
+.event-name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.event-name i {
+    font-size: 1.2em;
+    border: 1px solid;
+    padding: .3em .5em;
+    border-radius: 5px;
+}
+
+.groups-modal .modal-container {
+    width: 90vw;
+    height: 90dvh;
+}
+
+.groups-modal .group-header {
+    color: black;
+    font-weight: 600;
+    font-size: 1em;
+}
+
+.groups-modal .modal-container {
+    width: 90vw;
+    height: auto;
+    justify-content: normal;
+}
+
+.groups-modal .group {
+    border: 1px solid;
+    border-radius: 5px 5px 0 0;
+}

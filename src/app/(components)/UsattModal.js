@@ -8,12 +8,12 @@ export function UsattModal({ modalTitle, setOpenModal, placeholderText, onClickF
         debounce(keyword => {
             if (keyword.length) {
                 fetch(`/api/usatt/player-lookup/${keyword}`, {
-        headers: {
-          'Cache-Control': 'no-cache',
-          'Pragma': 'no-cache',
-          'Expires': '0'
-        }
-      })
+                    headers: {
+                        'Cache-Control': 'no-cache',
+                        'Pragma': 'no-cache',
+                        'Expires': '0'
+                    }
+                })
                     .then(response => response.json())
                     .then(data => setPlayers(data))
             } else {
