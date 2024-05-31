@@ -1,3 +1,5 @@
+export const fetchCache = 'force-no-store';
+
 import cheerio from "cheerio";
 
 export async function GET() {
