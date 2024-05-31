@@ -15,7 +15,7 @@ export function Events({ events }) {
                             <div className="group-header">
                                 <div className="event-name">
                                     <h2>{event.name}</h2>
-                                    <i onClick={() => setEventToGenerateGroups(event)} className="fa-solid fa-bolt-lightning" />
+                                    {event.players.length >= 6 ? <i onClick={() => setEventToGenerateGroups(event)} className="fa-solid fa-bolt-lightning" /> : null}
                                 </div>
                                 <div className="event-details bubbles">
                                     {event.maxSlots ? <span className="bubble">{event.maxSlots}</span> : null}
