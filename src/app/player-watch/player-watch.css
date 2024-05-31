@@ -1,7 +1,7 @@
 .add-player-button button {
     background: transparent;
-    color: white;
-    border: 1px solid white;
+    color: var(--primary-text-color);
+    border: 1px solid var(--border-color);
     font-size: 1em;
     width: auto;
     height: auto;
@@ -9,11 +9,11 @@
 }
 
 .player-watch-card {
-    color: white;
+    color: var(--container-background);
     display: flex;
     gap: 1em;
     font-size: 1.3em;
-    border: 1px solid white;
+    border: 1px solid var(--border-color);
     border-radius: 5px;
     padding: 0.5em;
     justify-content: space-between;
@@ -59,17 +59,17 @@ section.player-watch-content {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: var(--primary-text-color);
     background-color: transparent;
 }
 
 .player-watch-buttons button i {
     font-size: 1.5em;
-    color: var(--tertiary-color);
+    color: var(--secondary);
 }
 
 button.vs {
-    border: 1px solid var(--tertiary-color);
+    border: 1px solid var(--secondary);
     border-radius: 50%;
     padding: .5em;
     font-weight: 700;

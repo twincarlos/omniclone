@@ -11,7 +11,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html data-theme="light" lang="en">
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <Script src="https://kit.fontawesome.com/09c2dac4bc.js" crossOrigin="anonymous" />
       <body className={inter.className}>{children}</body>

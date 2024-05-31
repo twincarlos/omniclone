@@ -5,7 +5,7 @@
 
 .add-player-buttons button {
     background-color: transparent;
-    color: white;
+    color: var(--primary-text-color);
     border: 1px solid;
 }
 
@@ -13,7 +13,7 @@ section.head-to-head-header {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    color: white;
+    color: var(--primary-text-color);
 }
 
 section.head-to-head-content {
@@ -45,7 +45,7 @@ section.head-to-head-content {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    color: white;
+    color: var(--primary-text-color);
     width: 100%;
 }
 
