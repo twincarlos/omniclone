@@ -3,35 +3,33 @@ import "./player-watch.css";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { UsattModal } from "../(components)/UsattModal";
+import { Loading } from "../(components)/Loading";
 
 export default function PlayerWatch() {
     const [watchPlayers, setWatchPlayers] = useState([]);
     const [openModal, setOpenModal] = useState(false);
+    const [loadingPlayers, setLoadingPlayers] = useState(true);
 
     function modalFunction(player) {
         const localWatchPlayers = JSON.parse(localStorage.getItem("watchPlayers"));
         if (localWatchPlayers) {
             if (!localWatchPlayers.find(localPlayer => localPlayer.id === player.id)) {
-                localStorage.setItem("watchPlayers", JSON.stringify([...localWatchPlayers, {
+                const newWatchPlayers = [...localWatchPlayers, {
                     id: player.id,
                     name: `${player.firstName} ${player.lastName}`,
-                    location: player.location,
                     rating: player.rating
-                }]));
-                setWatchPlayers([...watchPlayers, {
-                    id: player.id,
-                    name: `${player.firstName} ${player.lastName}`,
-                    location: player.location,
-                    rating: player.rating
-                }]);
+                }];
+                localStorage.setItem("watchPlayers", JSON.stringify(newWatchPlayers));
+                setWatchPlayers(newWatchPlayers);
             };
         } else {
-            localStorage.setItem("watchPlayers", JSON.stringify([{
+            const newWatchPlayer = [{
                 id: player.id,
                 name: `${player.firstName} ${player.lastName}`,
-                location: player.location,
                 rating: player.rating
-            }]));
+            }];
+            localStorage.setItem("watchPlayers", JSON.stringify(newWatchPlayer));
+            setWatchPlayers(newWatchPlayer);
         };
     };
 
@@ -43,10 +41,17 @@ export default function PlayerWatch() {
 
     useEffect(() => {
         const localWatchPlayers = JSON.parse(localStorage.getItem("watchPlayers"));
-        if (localWatchPlayers) {
-            setWatchPlayers(localWatchPlayers);
+        async function fetchData(playersId) {
+            const response = await fetch(`/api/usatt/watch-players/${playersId}`);
+            const data = await response.json();
+            setWatchPlayers(data);
+            setLoadingPlayers(false);
         };
+        if (localWatchPlayers && localWatchPlayers.length) fetchData(localWatchPlayers.map(player => player.id).join("-"));
+        else setLoadingPlayers(false);
     }, []);
+
+    if (loadingPlayers) return <Loading />;
 
     return (
         <main className="player-watch">
