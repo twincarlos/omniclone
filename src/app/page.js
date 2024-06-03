@@ -70,11 +70,11 @@ export default function Home() {
   if (!groups.length || loadingRating) return <Loading />;
 
   return (
-    <main className="all-tournaments">
-      <Menu setMyRating={setMyRating} myRating={myRating} />
-      <Favorites groups={groups} expandFavorites={expandFavorites} setExpandFavorites={setExpandFavorites} favorites={favorites} updateFavorites={updateFavorites} />
-      <Filters setFilterText={setFilterText} />
-      <GroupsList groups={groups} filterText={filterText} viewMoreLess={viewMoreLess} setViewMoreLess={setViewMoreLess} favorites={favorites} updateFavorites={updateFavorites} />
-    </main>
+      <main className="all-tournaments">
+        <Menu setMyRating={setMyRating} myRating={myRating} />
+        <Favorites groups={groups} expandFavorites={expandFavorites} setExpandFavorites={setExpandFavorites} favorites={favorites} updateFavorites={updateFavorites} />
+        <Filters setFilterText={setFilterText} />
+        <GroupsList groups={groups} filterText={filterText} viewMoreLess={viewMoreLess} setViewMoreLess={setViewMoreLess} favorites={favorites} updateFavorites={updateFavorites} />
+      </main>
   );
 };

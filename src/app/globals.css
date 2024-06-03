@@ -2,8 +2,75 @@
   --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
     "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
     "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
-  --border-color: #F0EBE3;
+}
+
+[theme="blue"] {
   --body-background: linear-gradient(#153470, #040d2e);
+  --even-list-card-background: #ffffff;
+  --odd-list-card-background: #e1e1e1;
+  --primary: #1c50af;
+  --secondary: #77EEFF;
+  --tertiary: #FF3E00;
+  --header-background: #002361;
+  --border-color: white;
+  --primary-text-color: white;
+  --secondary-text-color: black;
+  --primary-button-background: white;
+  --modal-background: #0000009c;
+  --container-background: white;
+  --groups-modal-header-background: white;
+}
+[theme="red"] {
+  --body-background: linear-gradient(#701515, #2e0404);
+  --even-list-card-background: #ffffff;
+  --odd-list-card-background: #e1e1e1;
+  --primary: #1c50af;
+  --secondary: #77EEFF;
+  --tertiary: #FF3E00;
+  --header-background: #ac002f;
+  --border-color: white;
+  --primary-text-color: white;
+  --secondary-text-color: black;
+  --primary-button-background: white;
+  --modal-background: #0000009c;
+  --container-background: white;
+  --groups-modal-header-background: white;
+}
+[theme="green"] {
+  --body-background: linear-gradient(#217015, #072e04);
+  --even-list-card-background: #ffffff;
+  --odd-list-card-background: #e1e1e1;
+  --primary: #1c50af;
+  --secondary: #77EEFF;
+  --tertiary: #FF3E00;
+  --header-background: #004700;
+  --border-color: white;
+  --primary-text-color: white;
+  --secondary-text-color: black;
+  --primary-button-background: white;
+  --modal-background: #0000009c;
+  --container-background: white;
+  --groups-modal-header-background: white;
+}
+[theme="black-and-white"] {
+  --body-background: #e8e8e8;
+  --even-list-card-background: #ffffff;
+  --odd-list-card-background: #e1e1e1;
+  --primary: #1c50af;
+  --secondary: #77EEFF;
+  --tertiary: #FF3E00;
+  --header-background: white;
+  --border-color: black;
+  --primary-text-color: black;
+  --secondary-text-color: black;
+  --primary-button-background: white;
+  --modal-background: #0000009c;
+  --container-background: white;
+  --button-text-color: white;
+  --groups-modal-header-background: black;
+}
+[theme="gradient-1"] {
+  --body-background: linear-gradient(184deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
   --even-list-card-background: #ffffff;
   --odd-list-card-background: #e1e1e1;
   --primary: #1c50af;
@@ -16,6 +83,39 @@
   --primary-button-background: white;
   --modal-background: #0000009c;
   --container-background: white;
+  --groups-modal-header-background: black;
+}
+[theme="gradient-2"] {
+  --body-background: linear-gradient(180deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+  --even-list-card-background: #ffffff;
+  --odd-list-card-background: #e1e1e1;
+  --primary: #1c50af;
+  --secondary: #77EEFF;
+  --tertiary: #FF3E00;
+  --header-background: transparent;
+  --border-color: white;
+  --primary-text-color: white;
+  --secondary-text-color: black;
+  --primary-button-background: white;
+  --modal-background: #0000009c;
+  --container-background: white;
+  --groups-modal-header-background: black;
+}
+[theme="gradient-3"] {
+  --body-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+  --even-list-card-background: #ffffff;
+  --odd-list-card-background: #e1e1e1;
+  --primary: #1c50af;
+  --secondary: #77EEFF;
+  --tertiary: #FF3E00;
+  --header-background: transparent;
+  --border-color: white;
+  --primary-text-color: white;
+  --secondary-text-color: black;
+  --primary-button-background: white;
+  --modal-background: #0000009c;
+  --container-background: white;
+  --groups-modal-header-background: black;
 }
 
 * {
@@ -24,11 +124,13 @@
   margin: 0;
 }
 
-html,
-body {
+html, body {
   max-width: 100vw;
   overflow-x: hidden;
-  background-image: var(--body-background);
+  background: var(--body-background);
+  background-size: cover;
+  background-position: center;
+  height: 100dvh;
 }
 
 a {
@@ -106,13 +208,14 @@ input {
   font-size: 1em;
   height: 1.5em;
   background-color: var(--primary);
-  border: 1px solid;
-  color: var(--primary-text-color);
+  border: 1px solid var(--border-color);
+  color: var(--button-text-color);
 }
 
 .group-list {
   display: flex;
   flex-direction: column;
+  border: 1px solid var(--border-color);
 }
 
 .card {

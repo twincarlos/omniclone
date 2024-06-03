@@ -48,18 +48,18 @@ export default function HeadToHead() {
             </section>
             <section className="head-to-head-header">
                 <div className="player-card player1-card">
-                    <div className="player-rating">
+                    <div>
                         <h1>{player1?.rating}</h1>
                     </div>
-                    <div className="player-name">
+                    <div>
                         <p>{player1?.firstName} {player1?.lastName}</p>
                     </div>
                 </div>
                 <div className="player-card player2-card">
-                    <div className="player-rating">
+                    <div>
                         <h1>{player2?.rating}</h1>
                     </div>
-                    <div className="player-name">
+                    <div>
                         <p>{player2?.firstName} {player2?.lastName}</p>
                     </div>
                 </div>

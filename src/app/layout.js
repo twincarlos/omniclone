@@ -1,6 +1,8 @@
-import { Inter } from "next/font/google";
 import "./globals.css";
+import { Inter } from "next/font/google";
 import Script from "next/script";
+import { ThemeProvider } from "./(components)/ThemeProvider";
+import { App } from "./App";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -10,11 +12,14 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
   return (
-    <html data-theme="light" lang="en">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <Script src="https://kit.fontawesome.com/09c2dac4bc.js" crossOrigin="anonymous" />
-      <body className={inter.className}>{children}</body>
+    <html lang="en">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <Script src="https://kit.fontawesome.com/09c2dac4bc.js" crossOrigin="anonymous" />
+      <ThemeProvider>
+        <App inter={inter} children={children} />
+      </ThemeProvider>
     </html>
   );
 }
