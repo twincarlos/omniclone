@@ -4,7 +4,7 @@
     "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 }
 
-[theme="blue"] {
+[data-theme="blue"] {
   --body-background: linear-gradient(#153470, #040d2e);
   --even-list-card-background: #ffffff;
   --odd-list-card-background: #e1e1e1;
@@ -20,7 +20,7 @@
   --container-background: white;
   --groups-modal-header-background: white;
 }
-[theme="red"] {
+[data-theme="red"] {
   --body-background: linear-gradient(#701515, #2e0404);
   --even-list-card-background: #ffffff;
   --odd-list-card-background: #e1e1e1;
@@ -36,7 +36,7 @@
   --container-background: white;
   --groups-modal-header-background: white;
 }
-[theme="green"] {
+[data-theme="green"] {
   --body-background: linear-gradient(#217015, #072e04);
   --even-list-card-background: #ffffff;
   --odd-list-card-background: #e1e1e1;
@@ -52,7 +52,7 @@
   --container-background: white;
   --groups-modal-header-background: white;
 }
-[theme="black-and-white"] {
+[data-theme="black-and-white"] {
   --body-background: #e8e8e8;
   --even-list-card-background: #ffffff;
   --odd-list-card-background: #e1e1e1;
@@ -69,7 +69,7 @@
   --button-text-color: white;
   --groups-modal-header-background: black;
 }
-[theme="gradient-1"] {
+[data-theme="gradient-1"] {
   --body-background: linear-gradient(184deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
   --even-list-card-background: #ffffff;
   --odd-list-card-background: #e1e1e1;
@@ -85,7 +85,7 @@
   --container-background: white;
   --groups-modal-header-background: black;
 }
-[theme="gradient-2"] {
+[data-theme="gradient-2"] {
   --body-background: linear-gradient(180deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
   --even-list-card-background: #ffffff;
   --odd-list-card-background: #e1e1e1;
@@ -101,7 +101,7 @@
   --container-background: white;
   --groups-modal-header-background: black;
 }
-[theme="gradient-3"] {
+[data-theme="gradient-3"] {
   --body-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
   --even-list-card-background: #ffffff;
   --odd-list-card-background: #e1e1e1;

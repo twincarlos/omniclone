@@ -6,6 +6,7 @@ import { Filters } from "./(components)/Filters";
 import { GroupsList } from "./(components)/GroupsList";
 import { Loading } from "./(components)/Loading";
 import { Menu } from "./(components)/Menu";
+import { ThemeProvider } from "next-themes";
 
 export default function Home() {
   const [groups, setGroups] = useState([]);
@@ -70,11 +71,13 @@ export default function Home() {
   if (!groups.length || loadingRating) return <Loading />;
 
   return (
+    <ThemeProvider>
       <main className="all-tournaments">
         <Menu setMyRating={setMyRating} myRating={myRating} />
         <Favorites groups={groups} expandFavorites={expandFavorites} setExpandFavorites={setExpandFavorites} favorites={favorites} updateFavorites={updateFavorites} />
         <Filters setFilterText={setFilterText} />
         <GroupsList groups={groups} filterText={filterText} viewMoreLess={viewMoreLess} setViewMoreLess={setViewMoreLess} favorites={favorites} updateFavorites={updateFavorites} />
       </main>
+    </ThemeProvider>
   );
 };

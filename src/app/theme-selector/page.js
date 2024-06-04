@@ -1,13 +1,11 @@
 "use client";
 import Link from "next/link";
-import { ThemeContext } from "../(components)/ThemeProvider";
-import { useContext } from "react";
 import "../style.css";
+import { useTheme } from "next-themes";
 
 export default function ThemeSelector() {
-    const { theme, setTheme } = useContext(ThemeContext);
+    const { theme, setTheme } = useTheme();
     function handleOptionChange(e) {
-        localStorage.setItem("theme", e.target.value);
         setTheme(e.target.value);
     };
     return (
