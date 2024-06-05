@@ -4,6 +4,38 @@
     "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 }
 
+[data-theme="light"] {
+  --body-background: linear-gradient(#153470, #040d2e);
+  --even-list-card-background: #ffffff;
+  --odd-list-card-background: #e1e1e1;
+  --primary: #1c50af;
+  --secondary: #77EEFF;
+  --tertiary: #FF3E00;
+  --header-background: #002361;
+  --border-color: white;
+  --primary-text-color: white;
+  --secondary-text-color: black;
+  --primary-button-background: white;
+  --modal-background: #0000009c;
+  --container-background: white;
+  --groups-modal-header-background: white;
+}
+[data-theme="dark"] {
+  --body-background: linear-gradient(#153470, #040d2e);
+  --even-list-card-background: #ffffff;
+  --odd-list-card-background: #e1e1e1;
+  --primary: #1c50af;
+  --secondary: #77EEFF;
+  --tertiary: #FF3E00;
+  --header-background: #002361;
+  --border-color: white;
+  --primary-text-color: white;
+  --secondary-text-color: black;
+  --primary-button-background: white;
+  --modal-background: #0000009c;
+  --container-background: white;
+  --groups-modal-header-background: white;
+}
 [data-theme="blue"] {
   --body-background: linear-gradient(#153470, #040d2e);
   --even-list-card-background: #ffffff;
