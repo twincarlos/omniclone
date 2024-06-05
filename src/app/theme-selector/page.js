@@ -22,7 +22,7 @@ export default function ThemeSelector() {
                         <input
                             type="radio"
                             value="blue"
-                            checked={theme === "blue" || theme === "light" || theme === "dark"}
+                            checked={theme === "blue" || theme === "light" || theme === "dark" || !theme}
                             onChange={handleOptionChange}
                         />
                         Blue (default)
