@@ -1,0 +1,128 @@
+.rating-calculator-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2em;
+}
+
+.rating-calculator-content label {
+    color: var(--primary-text-color);
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+}
+
+.rating-calculator-content label input {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    padding: 5px;
+    color: var(--primary-text-color);
+    font-size: 2em;
+    height: fit-content;
+    width: 150px;
+}
+
+.win-loss-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.rating-calculator-player {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.rating-calculator-player-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    color: var(--primary-text-color);
+}
+
+.rating-calculator-player-inputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+.rating-calculator-player-inputs label {
+    width: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary-text-color);
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.rating-calculator-player-inputs label input {
+    width: 20px;
+    height: 20px;
+}
+
+.win-loss-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1em;
+}
+
+.rating-calculator-player-inputs button {
+    width: auto;
+    height: auto;
+    background: transparent;
+    color: var(--tertiary);
+    font-size: 20px;
+}
+
+.usatt-and-manual-modals .usatt-modal.modal {
+    height: 70%;
+    background: transparent;
+    position: unset;
+}
+
+.usatt-and-manual-modals .manual-modal.modal {
+    height: 30%;
+    background: transparent;
+    position: unset;
+}
+
+.usatt-and-manual-modals .modal .modal-container {
+    height: 100%;
+}
+
+.usatt-and-manual-modals {
+    width: 100vw;
+    height: 100dvh;
+    background: var(--modal-background);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 3em;
+    gap: 1em;
+}
+
+.usatt-and-manual-modals .manual-modal.modal .modal-container {
+    justify-content: flex-start;
+}
+
+.manual-modal input {
+    border: 2px solid var(--primary);
+}
+
+.manual-modal-inputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: .5em;
+}

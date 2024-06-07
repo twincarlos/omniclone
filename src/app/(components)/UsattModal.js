@@ -22,7 +22,7 @@ export function UsattModal({ modalTitle, setOpenModal, placeholderText, onClickF
         }, 500), []);
 
     return (
-        <div className="modal">
+        <div className="usatt-modal modal">
             <div className="modal-container">
                 <div className="modal-header">
                     <div className="modal-title">

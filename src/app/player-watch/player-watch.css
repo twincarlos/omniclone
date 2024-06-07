@@ -9,7 +9,7 @@
 }
 
 .player-watch-card {
-    color: var(--container-background);
+    color: var(--primary-text-color);
     display: flex;
     gap: 1em;
     font-size: 1.3em;

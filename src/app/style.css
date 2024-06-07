@@ -196,3 +196,8 @@ section.tournaments-list {
 .list-card .tournament-name {
     color: var(--secondary-text-color);
 }
+
+.manual-modal-inputs button {
+    font-size: 1em;
+    border: 1px solid var(--primary);
+}
