@@ -54,33 +54,6 @@ export default function ThemeSelector() {
                         />
                         Black and White
                     </label>
-                    <label>
-                        <input
-                            type="radio"
-                            value="gradient-1"
-                            checked={theme === "gradient-1"}
-                            onChange={handleOptionChange}
-                        />
-                        Gradient 1
-                    </label>
-                    <label>
-                        <input
-                            type="radio"
-                            value="gradient-2"
-                            checked={theme === "gradient-2"}
-                            onChange={handleOptionChange}
-                        />
-                        Gradient 2
-                    </label>
-                    <label>
-                        <input
-                            type="radio"
-                            value="gradient-3"
-                            checked={theme === "gradient-3"}
-                            onChange={handleOptionChange}
-                        />
-                        Gradient 3
-                    </label>
                 </div>
             </section>
         </main>

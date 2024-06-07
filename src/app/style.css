@@ -121,7 +121,7 @@ button.active {
     font-weight: 200;
 }
 
-.input-filter {
+.input-filter input {
     background: var(--container-background);
     border-radius: 5px;
 }
@@ -191,4 +191,8 @@ section.tournaments-list {
 
 .theme-options label input {
     width: 2em;
+}
+
+.list-card .tournament-name {
+    color: var(--secondary-text-color);
 }
