@@ -1,6 +1,10 @@
+"use client";
 import "../style.css";
+import { useState } from "react";
 
-export function ManualModal({ setOpenModal }) {
+export function ManualModal({ setOpenModal, onClickFunction }) {
+    const [playerRating, setPlayerRating] = useState(null);
+    const [playerName, setPlayerName] = useState("");
     return (
         <div className="manual-modal modal">
             <div className="modal-container">
@@ -13,9 +17,15 @@ export function ManualModal({ setOpenModal }) {
                     </div>
                 </div>
                 <div className="manual-modal-inputs">
-                    <input type="number" placeholder="Rating"/>
-                    <input type="text" placeholder="Name (optional)" />
-                    <button onClick={() => setOpenModal(false)}><i className="fa-solid fa-plus" /> Add player</button>
+                    <input type="number" placeholder="Rating" value={playerRating} onChange={e => setPlayerRating(e.target.value)} />
+                    <input type="text" placeholder="Name (optional)" value={playerName} onChange={e => setPlayerName(e.target.value)} />
+                    <button onClick={() => {
+                        if (!playerRating) return alert("Must include a rating.");
+                        onClickFunction({
+                        rating: playerRating,
+                        firstName: playerName.split(" ")[0],
+                        lastName: playerName.split(" ")[1]
+                    })}}><i className="fa-solid fa-plus" /> Add player</button>
                 </div>
             </div>
         </div>

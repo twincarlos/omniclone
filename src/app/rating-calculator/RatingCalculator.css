@@ -31,22 +31,23 @@
 .rating-calculator-player {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 3em;
 }
 
 .rating-calculator-player-info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1em;
     color: var(--primary-text-color);
+    display: flex;
+    align-items: center;
+    width: 70%;
+    justify-content: space-between;
 }
 
 .rating-calculator-player-inputs {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     gap: 1em;
+    width: 30%;
 }
 
 .rating-calculator-player-inputs label {
