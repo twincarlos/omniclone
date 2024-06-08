@@ -73,12 +73,10 @@
     gap: 1em;
 }
 
-.rating-calculator-player-inputs button {
-    width: auto;
-    height: auto;
-    background: transparent;
-    color: var(--tertiary);
-    font-size: 20px;
+.manual-modal-inputs button {
+    border: 1px solid var(--primary);
+    height: fit-content;
+    padding: .2em;
 }
 
 .usatt-and-manual-modals .usatt-modal.modal {
@@ -126,4 +124,9 @@
     align-items: center;
     flex-direction: column;
     gap: .5em;
+}
+
+.rating-calculator-player-outcome p {
+    font-size: 30px;
+    font-weight: 200;
 }

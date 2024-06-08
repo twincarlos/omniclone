@@ -105,7 +105,7 @@ export default function RatingCalculator() {
                 }
             };
         }
-        else {
+        else if (outcome === "L") {
             if (myRating >= playerRating) {
                 if (pointsDifference >= 0 && pointsDifference <= 12) {
                     return -8;
@@ -177,6 +177,7 @@ export default function RatingCalculator() {
                 }
             };
         };
+        return 0;
     };
 
     const debouncedInitialRatingUpdate = useCallback(
@@ -250,7 +251,7 @@ export default function RatingCalculator() {
                                     <p>{player.name}</p>
                                 </div>
                                 <div className="rating-calculator-player-outcome">
-                                    <p>-8</p>
+                                    <p>{determineWinLossPoints(initialRating, player.rating, player.outcome)}</p>
                                 </div>
                             </div>
                             <div className="rating-calculator-player-inputs">
