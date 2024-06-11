@@ -33,7 +33,6 @@ export default function RatingCalculator() {
     function determineWinLossPoints(myRating, playerRating, outcome) {
         const pointsDifference = Math.abs(Number(myRating) - Number(playerRating));
         if (outcome === "W") {
-            console.log("W")
             if (Number(myRating) >= Number(playerRating)) {
                 if (pointsDifference >= 0 && pointsDifference <= 12) {
                     return 8;
@@ -106,7 +105,7 @@ export default function RatingCalculator() {
             };
         }
         else if (outcome === "L") {
-            if (myRating >= playerRating) {
+            if (Number(myRating) >= Number(playerRating)) {
                 if (pointsDifference >= 0 && pointsDifference <= 12) {
                     return -8;
                 }
