@@ -122,7 +122,6 @@ button.active {
 }
 
 .input-filter input {
-    background: var(--container-background);
     border-radius: 5px;
 }
 
@@ -200,4 +199,8 @@ section.tournaments-list {
 .manual-modal-inputs button {
     font-size: 1em;
     border: 1px solid var(--primary);
+}
+
+button.tab {
+    color: var(--secondary-text-color);
 }

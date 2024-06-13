@@ -162,6 +162,8 @@ input {
   border-radius: 5px;
   border: none;
   font-size: 16px;
+  background: transparent;
+  color: var(--secondary-text-color);
 }
 
 .group {
@@ -222,6 +224,7 @@ input {
   display: flex;
   gap: .5em;
   padding: .5em;
+  color: var(--secondary-text-color);
 }
 
 .list-card:nth-child(odd) {
