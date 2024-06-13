@@ -4,8 +4,47 @@
     "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 }
 
+[data-theme="green-stripes"] {
+  --background-size: 24px 24px;
+  --body-background: #004908;
+  --body-background-image: linear-gradient(#60f745 1.2000000000000002px, transparent 1.2000000000000002px), linear-gradient(to right, #60f745 1.2000000000000002px, #004908 1.2000000000000002px);
+  --body-background-blend-mode: multiply;
+  --even-list-card-background: #ffffff;
+  --odd-list-card-background: #e1e1e1;
+  --primary: #1c50af;
+  --secondary: #77EEFF;
+  --tertiary: #FF3E00;
+  --header-background: #072c0bcc;
+  --border-color: white;
+  --primary-text-color: white;
+  --secondary-text-color: black;
+  --primary-button-background: white;
+  --modal-background: #0000009c;
+  --groups-modal-header-background: white;
+  --container-background: white;
+}
+[data-theme="purple-circles"] {
+  --background-size: cover;
+  --body-background:  #eedfff;
+  --body-background-image: radial-gradient(circle at center center, #e600ff, #eedfff), repeating-radial-gradient(circle at center center, #e600ff, #e600ff, 14px, transparent 28px, transparent 14px);
+  --body-background-blend-mode: multiply;
+  --even-list-card-background: #ffffff;
+  --odd-list-card-background: #e1e1e1;
+  --primary: #1c50af;
+  --secondary: #77EEFF;
+  --tertiary: #FF3E00;
+  --header-background: #5620d4;
+  --border-color: white;
+  --primary-text-color: white;
+  --secondary-text-color: black;
+  --primary-button-background: white;
+  --modal-background: #0000009c;
+  --groups-modal-header-background: white;
+  --container-background: white;
+}
 [data-theme="light"] {
   --body-background: linear-gradient(#153470, #040d2e);
+  --body-background-image: linear-gradient(#153470, #040d2e);
   --even-list-card-background: #ffffff;
   --odd-list-card-background: #e1e1e1;
   --primary: #1c50af;
@@ -22,6 +61,7 @@
 }
 [data-theme="dark"] {
   --body-background: linear-gradient(#153470, #040d2e);
+  --body-background-image: linear-gradient(#153470, #040d2e);
   --even-list-card-background: #ffffff;
   --odd-list-card-background: #e1e1e1;
   --primary: #1c50af;
@@ -38,6 +78,7 @@
 }
 [data-theme="blue"] {
   --body-background: linear-gradient(#153470, #040d2e);
+  --body-background-image: linear-gradient(#153470, #040d2e);
   --even-list-card-background: #ffffff;
   --odd-list-card-background: #e1e1e1;
   --primary: #1c50af;
@@ -54,6 +95,7 @@
 }
 [data-theme="red"] {
   --body-background: linear-gradient(#701515, #2e0404);
+  --body-background-image: linear-gradient(#701515, #2e0404);
   --even-list-card-background: #ffffff;
   --odd-list-card-background: #e1e1e1;
   --primary: #1c50af;
@@ -70,6 +112,7 @@
 }
 [data-theme="green"] {
   --body-background: linear-gradient(#217015, #072e04);
+  --body-background-image: linear-gradient(#217015, #072e04);
   --even-list-card-background: #ffffff;
   --odd-list-card-background: #e1e1e1;
   --primary: #1c50af;
@@ -86,6 +129,7 @@
 }
 [data-theme="black-and-white"] {
   --body-background: #e8e8e8;
+  --body-background-image: #e8e8e8;
   --even-list-card-background: #ffffff;
   --odd-list-card-background: #e1e1e1;
   --primary: #1c50af;
@@ -112,7 +156,9 @@ html, body {
   max-width: 100vw;
   overflow-x: hidden;
   background: var(--body-background);
-  background-size: cover;
+  background-image: var(--body-background-image);
+  background-blend-mode: var(--body-background-blend-mode);
+  background-size: var(--background-size);
   background-position: center;
   height: 100dvh;
 }
@@ -278,6 +324,7 @@ input {
   border: 1px solid var(--border-color);
   border-radius: 4px;
   margin-bottom: 1em;
+  background: var(--header-background);
 }
 
 .bubbles {
@@ -304,7 +351,7 @@ input {
 
 .back-link {
   width: 5em;
-  background-color: transparent;
+  background-color: var(--header-background);
   color: var(--primary-text-color);
   font-size: 1em;
   padding: .5em 1em;
@@ -346,7 +393,7 @@ section.tournament-header {
 }
 
 a.pdf {
-  background-color: transparent;
+  background-color: var(--header-background);
   color: var(--primary-text-color);
   justify-content: center;
   align-items: center;

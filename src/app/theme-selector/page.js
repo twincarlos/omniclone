@@ -52,7 +52,25 @@ export default function ThemeSelector() {
                             checked={theme === "black-and-white"}
                             onChange={handleOptionChange}
                         />
-                        Black and White
+                        Light Black and White
+                    </label>
+                    <label>
+                        <input
+                            type="radio"
+                            value="purple-circles"
+                            checked={theme === "purple-circles"}
+                            onChange={handleOptionChange}
+                        />
+                        Purple Circles
+                    </label>
+                    <label>
+                        <input
+                            type="radio"
+                            value="green-stripes"
+                            checked={theme === "green-stripes"}
+                            onChange={handleOptionChange}
+                        />
+                        Green Stripes
                     </label>
                 </div>
             </section>
