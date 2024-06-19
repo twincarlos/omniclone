@@ -5,6 +5,7 @@ import "./tournament.css";
 import { useState, useEffect } from "react";
 import { Events } from "@/app/(components)/Events";
 import { Players } from "@/app/(components)/Players";
+import { Teams } from "@/app/(components)/Teams";
 import Link from "next/link";
 
 export default function Tournament() {
@@ -29,7 +30,8 @@ export default function Tournament() {
                 date: url[4].split("%20-%20").join(" - "),
                 pdf: url[1],
                 players: data.players,
-                events: data.events
+                events: data.events,
+                teamEvents: data.teamEvents
             });
         };
 
@@ -81,10 +83,12 @@ export default function Tournament() {
                         <div className="tabs">
                             <button className={`tab ${category === "Players" ? "tab-selected" : ""}`} onClick={() => setCategory("Players")}>Players</button>
                             <button className={`tab ${category === "Events" ? "tab-selected" : ""}`} onClick={() => setCategory("Events")}>Events</button>
+                            { tournament.teamEvents.length ? <button className={`tab ${category === "Teams" ? "tab-selected" : ""}`} onClick={() => setCategory("Teams")}>Teams</button> : null }
                         </div>
                         <div className="page-content">
+
                             {
-                                category === "Players" ? <Players players={tournament.players} /> : <Events events={tournament.events} />
+                                category === "Players" ? <Players players={tournament.players} /> : ( category === "Events" ? <Events events={tournament.events} /> : <Teams teamEvents={tournament.teamEvents} />)
                             }
                         </div>
                     </section> :

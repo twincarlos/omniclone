@@ -206,3 +206,12 @@ section.tournaments-list {
 button.tab {
     color: var(--secondary-text-color);
 }
+
+.team-name {
+    width: 20%;
+    overflow-x: scroll;
+}
+
+.team-members {
+    width: 65%;
+}

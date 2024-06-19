@@ -23,6 +23,8 @@ export async function GET(req, { params }) {
         }));
     } else {
         const players = [];
+        const teamsEvents = [];
+
         $p("center > table").each((index, element) => {
             if (index === 1) {
                 $p(element).find("tbody > tr").each((index, element) => {
@@ -96,10 +98,43 @@ export async function GET(req, { params }) {
             };
         });
 
+        const teamsData = await fetch(`https://www.omnipong.com/T-tourney.asp?t=105&r=${tournamentId}`, {
+            headers: {
+                'Cache-Control': 'no-cache',
+                'Pragma': 'no-cache',
+                'Expires': '0'
+            }
+        });
+        const teamsHTML = await teamsData.text(); // converts data into html text
+        const $t = load(teamsHTML); // loads html text
+
+        $t("center h4").each((index, element) => {
+            const teamEventName = $t(element).children("p").first().text();
+            const eventTeams = [];
+            $t(element).children("table").first().each((index, element) => {
+                $t(element).find("tbody > tr").each((index, element) => {
+                    if (index > 0) {
+                        const team = {};
+                        $t(element).children("td").each((index, element) => {
+                            if (index === 0) team["name"] = $t(element).text();
+                            if (index === 1) team["rating"] = $t(element).text();
+                            if (index === 2) team["members"] = $t(element).text();
+                        });
+                        eventTeams.push(team);
+                    };
+                });
+            });
+            teamsEvents.push({
+                eventName: teamEventName,
+                eventTeams
+            });
+        });
+
         return new Response(JSON.stringify({
             name: $p("center > h3").text().split("-")[0].trim(),
             players,
-            events
+            events,
+            teamEvents: teamsEvents
         }));
     };
 }
