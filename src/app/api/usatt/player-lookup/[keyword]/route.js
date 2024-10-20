@@ -18,16 +18,16 @@ export async function GET(req, { params }) {
     $(".list-view > .row > table > tbody > tr").each((index, element) => {
         const player = {};
         $(element).children("td.list-column").each((index, element) => {
-            if (index === 1) {
+            if (index === 2) {
                 const elementChild = $(element).children("a").first();
                 const split1 = $(elementChild).attr("href").split("/");
                 player["firstName"] = $(elementChild).text();
                 player["id"] = split1[split1.length - 1];
-            } else if (index === 2) {
-                player["lastName"] = $(element).children("a").first().text();
             } else if (index === 3) {
-                player["location"] = $(element).text();
+                player["lastName"] = $(element).children("a").first().text();
             } else if (index === 4) {
+                player["location"] = $(element).text();
+            } else if (index === 5) {
                 player["rating"] = $(element).text();
             };
         });
